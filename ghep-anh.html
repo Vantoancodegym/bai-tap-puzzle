@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Puzzle</title>
+</head>
+<body>
+<img src="a1/p1.jpg" id="p1" style="width: 60%"  onclick="changeimg(this)"><br>
+<img src="a2/p2.jpg" id="p2" style="width: 60%" onclick="changeimg(this)"><br>
+<img src="a3/p3.jpg" id="p3" style="width: 60%" onclick="changeimg(this)"><br>
+<img src="a1/p4.jpg" id="p4" style="width: 60%" onclick="changeimg(this)"><br>
+<img src="a2/p5.jpg" id="p5" style="width: 60%" onclick="changeimg(this)"><br>
+</body>
+</html>
+<script>
+    function changeimg(e){
+      let  idOfE = e.getAttribute("id");
+      let x = parseInt(Math.random()*3+1);
+       let imgsrc = "a" + x + "/" + idOfE + ".jpg";
+        e.setAttribute("src",imgsrc);
+        checkWin()
+    }
+    function checkWin() {
+        let p1 = document.getElementById("p1").getAttribute("src").substr(0,2)
+        let p2 = document.getElementById("p2").getAttribute("src").substr(0,2)
+        let p3 = document.getElementById("p3").getAttribute("src").substr(0,2)
+        let p4 = document.getElementById("p4").getAttribute("src").substr(0,2)
+        let p5 = document.getElementById("p5").getAttribute("src").substr(0,2)
+        if(p1==p2 && p2==p3 && p3==p4 && p4==p5){
+            document.getElementById("p1").style.border = "5px solid red";
+        document.getElementById("p2").style.border = "5px solid red";
+        document.getElementById("p3").style.border = "5px solid red";
+        document.getElementById("p4").style.border = "5px solid red";
+        document.getElementById("p5").style.border = "5px solid red";
+    } else {
+        document.getElementById("p1").style.border = "0px";
+        document.getElementById("p2").style.border = "0px";
+        document.getElementById("p3").style.border = "0px";
+        document.getElementById("p4").style.border = "0px";
+        document.getElementById("p5").style.border = "0px";
+    }
+    }
+</script>
